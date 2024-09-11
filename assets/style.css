@@ -123,20 +123,42 @@ header {
 }
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
+#banner {
+    display: flex;
+	flex-direction: row;
+    justify-content: space-between; /* Place les flèches à gauche et à droite */
+    width: 100%;
+    position: relative;
+}
 #banner .arrow {
-	position: absolute;
+    width: 50px;
+    height: 70px;
 }
 #banner .arrow_left {
-	left: 10px;
+    margin-left: 10px;
 }
 #banner .arrow_right {
-	right: 10px;
+    margin-right: 10px;
 }
+#bouton1,
+#bouton2 {
+	background: none;
+	border: none;
+}
+#bouton1 {
+	margin-left: 10px;
+}
+#bouton2 {
+	margin-right: 10px;
+}
+
 /* Gestion des points du carrousel */
 .dots {
 	position: absolute;
-	bottom: 40px;
-	display: flex;
+    bottom: 40px;
+	left: 50%;
+    transform: translateX(-50%);
+    display: flex;
 }
 .dot {
 	margin-inline: 5px;
