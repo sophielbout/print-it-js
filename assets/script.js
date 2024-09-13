@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Variable pour suivre l'index du slide actuel
     let currentSlide = 0;
-    let bouton1 = document.getElementById("bouton1");
-    let bouton2 = document.getElementById("bouton2");
-    let bannerImg = document.querySelector(".banner-img");
-    let tagLine = document.querySelector("#banner p");
-    let dotsContainer = document.querySelector(".dots");
+    const arrowLeft = document.querySelector(".arrow_left");
+    const arrowRight = document.querySelector(".arrow_right");
+    const bannerImg = document.querySelector(".banner-img");
+    const tagLine = document.querySelector("#banner p");
+    const dotsContainer = document.querySelector(".dots");
 
     // Fonction pour mettre à jour le slider et la tagline
     function updateSlider(index) {
@@ -50,24 +50,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-// Fonction pour mettre à jour l'état des bullet points actifs
-function updateActiveDot(index) {
-    const dots = document.querySelectorAll(".dot");
-    dots.forEach(dot => dot.classList.remove("dot_selected"));
-    dots[index].classList.add("dot_selected");
-}
-
+    // Fonction pour mettre à jour l'état des bullet points actifs
+    function updateActiveDot(index) {
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach(dot => dot.classList.remove("dot_selected"));
+        dots[index].classList.add("dot_selected");
+    }
 
     // Ajoute un événement au bouton de gauche pour changer d'image en arrière
-    bouton1.addEventListener("click", () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    arrowLeft.addEventListener("click", () => {
+        currentSlide -= 1;
+        if (currentSlide == -1) {
+            currentSlide = slides.length - 1;
+        }
         updateSlider(currentSlide);
         console.log("Bonjour, vous avez cliqué sur le bouton gauche !");
     });
 
     // Ajoute un événement au bouton de droite pour avancer d'image
-    bouton2.addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
+    arrowRight.addEventListener("click", () => {
+        currentSlide += 1;
+        if (currentSlide == slides.length) {
+            currentSlide = 0;
+        }
         updateSlider(currentSlide);
         console.log("Bonjour, vous avez cliqué sur le bouton droit !");
     });
