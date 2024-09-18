@@ -1,0 +1,2 @@
+https://github.com/sophielbout/print-it-js.git
+https://sophielbout.github.io/print-it-js/
